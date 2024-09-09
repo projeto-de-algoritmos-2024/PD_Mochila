@@ -1,23 +1,40 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  background-image: url("../public/knapsack-background.jpg");
+  background-color: #f4f4f9;  
   color: #333;
   margin: 0;
   padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 15px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(221, 221, 221);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #2980b9;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 4px solid rgb(221, 221, 221);  /* creates padding around scroll thumb */
 }
 
 .app-container {
   max-width: 800px;
   margin: 50px auto;
   padding: 20px;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
 h1 {
-  color: #2c3e50;
+  color: #2980b9;
   text-align: center;
+  font-weight: bold;
+  text-shadow: 2px 2px 3px #253947;
   margin-bottom: 30px;
 }
 
@@ -42,6 +59,12 @@ input[type="number"] {
   box-sizing: border-box;
 }
 
+.knapsack-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .knapsack-button,
 .add-item-button {
   padding: 10px 20px;
@@ -50,12 +73,23 @@ input[type="number"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.knapsack-button:hover,
+.knapsack-button:hover {
+  background-color: #2980b9;
+  transform: translateY(5px);
+}
+
 .add-item-button:hover {
   background-color: #2980b9;
+  transform: translateX(5px);
+}
+
+.horizontal-line {
+  width: 100%;
+  border: 2px solid #ccc;
+  margin-top: 20px;
 }
 
 h3 {
@@ -66,8 +100,41 @@ h3 {
 .memo-matrix table,
 .selected-items ul,
 .added-items-container ul {
-  width: 100%;
+  width: 95%;
+  height: auto;
+  max-height: 30vh;
+  overflow-y: scroll;
   border-collapse: collapse;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+.memo-matrix {
+  max-height: 50vh;
+  max-width: 100%;
+  overflow: scroll;
+  height: auto;
+}
+
+.added-items-container ul::-webkit-scrollbar,
+.selected-items ul::-webkit-scrollbar,
+.memo-matrix::-webkit-scrollbar {
+  width: 15px;               /* width of the entire scrollbar */
+}
+
+.added-items-container ul::-webkit-scrollbar-track,
+.selected-items ul::-webkit-scrollbar-track,
+.memo-matrix::-webkit-scrollbar-track {
+  background: #2980b9;        /* color of the tracking area */
+  border-radius: 10px;
+}
+
+.added-items-container ul::-webkit-scrollbar-thumb,
+.selected-items ul::-webkit-scrollbar-thumb,
+.memo-matrix::-webkit-scrollbar-thumb {
+  background-color: rgb(221, 221, 221);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 4px solid #2980b9;  /* creates padding around scroll thumb */
 }
 
 .memo-matrix td,
@@ -90,6 +157,8 @@ h3 {
 }
 
 .total-value {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
   margin-top: 30px;
   padding: 15px;
