@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 
 function Knapsack({ maxWeight, items }) {
   const [memo, setMemo] = useState([]);
@@ -10,7 +11,6 @@ function Knapsack({ maxWeight, items }) {
     const W = maxWeight;
     const memoTable = Array(n + 1).fill(null).map(() => Array(W + 1).fill(0));
     const pathTable = Array(n + 1).fill(null).map(() => Array(W + 1).fill(''));
-
 
     for (let i = 1; i <= n; i++) {
       const { weight, value } = items[i - 1];
@@ -81,8 +81,8 @@ function Knapsack({ maxWeight, items }) {
   };
 
   return (
-    <div>
-      <button onClick={solveKnapsack}>Calcular Mochila</button>
+    <div className="knapsack-container">
+      <button className="knapsack-button" onClick={solveKnapsack}>Calcular Mochila</button>
       <MemoizationMatrix memo={memo} />
       <SelectedItems items={selectedItems} />
       <TotalValue value={totalValue} />
@@ -94,7 +94,7 @@ function MemoizationMatrix({ memo }) {
   if (!memo.length) return null;
 
   return (
-    <div>
+    <div className="memo-matrix">
       <h3>Matriz de Memoization</h3>
       <table>
         <tbody>
@@ -111,13 +111,11 @@ function MemoizationMatrix({ memo }) {
   );
 }
 
-
-
 function SelectedItems({ items }) {
   if (!items.length) return null;
 
   return (
-    <div>
+    <div className="selected-items">
       <h3>Itens Selecionados</h3>
       <ul>
         {items.map((item, index) => (
@@ -130,7 +128,7 @@ function SelectedItems({ items }) {
 
 function TotalValue({ value }) {
   return (
-    <div>
+    <div className="total-value">
       <h3>Valor Total Máximo</h3>
       <p>{value}</p>
     </div>
@@ -151,20 +149,27 @@ function App() {
     }
   };
 
+  const handleNumericInputChange = (e, field) => {
+    const value = e.target.value;
+    if (!isNaN(value)) {
+      setNewItem({ ...newItem, [field]: Number(value) });
+    }
+  };
+
   return (
-    <div>
+    <div className="app-container">
       <h1>Algoritmo da Mochila</h1>
-      <div>
+      <div className="input-container">
         <label>
           Peso Máximo da Mochila:
           <input 
-            type="number" 
+            type="text" 
             value={maxWeight} 
             onChange={(e) => setMaxWeight(Number(e.target.value))} 
           />
         </label>
       </div>
-      <div>
+      <div className="add-item-container">
         <h3>Adicionar Item</h3>
         <input 
           type="text" 
@@ -173,20 +178,20 @@ function App() {
           onChange={(e) => setNewItem({ ...newItem, name: e.target.value })} 
         />
         <input 
-          type="number" 
+          type="text" 
           placeholder="Peso" 
           value={newItem.weight} 
-          onChange={(e) => setNewItem({ ...newItem, weight: Number(e.target.value) })} 
+          onChange={(e) => handleNumericInputChange(e, 'weight')} 
         />
         <input 
-          type="number" 
+          type="text" 
           placeholder="Valor" 
           value={newItem.value} 
-          onChange={(e) => setNewItem({ ...newItem, value: Number(e.target.value) })} 
+          onChange={(e) => handleNumericInputChange(e, 'value')} 
         />
-        <button onClick={addItem}>Adicionar Item</button>
+        <button className="add-item-button" onClick={addItem}>Adicionar Item</button>
       </div>
-      <div>
+      <div className="added-items-container">
         <h3>Itens Adicionados</h3>
         <ul>
           {items.map((item, index) => (
