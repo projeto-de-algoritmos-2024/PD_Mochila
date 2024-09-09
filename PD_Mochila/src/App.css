@@ -81,7 +81,7 @@ h3 {
 .added-items-container li {
   list-style: none;
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  
 }
 
 .selected-items li:last-child,
