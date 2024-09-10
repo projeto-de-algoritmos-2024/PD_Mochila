@@ -15,9 +15,9 @@ O objetivo deste projeto é criar um site que utilize o algoritmo da mochila, pe
 
 ## Screenshots
 
-<img src="https://github.com/projeto-de-algoritmos-2024/PD_Mochila/blob/master/PD_Mochila/public/Print1.png?raw=true" alt="Screenshot 01" />
-<img src="https://github.com/projeto-de-algoritmos-2024/PD_Mochila/blob/master/PD_Mochila/public/Print2.png?raw=true" alt="Screenshot 02" />
-<img src="https://github.com/projeto-de-algoritmos-2024/PD_Mochila/blob/master/PD_Mochila/public/Print3.png?raw=true" alt="Screenshot 03" />
+<img src="https://github.com/projeto-de-algoritmos-2024/PD_Mochila/blob/master/PD_Mochila/public/Print01.png?raw=true" alt="Screenshot 01" />
+<img src="https://github.com/projeto-de-algoritmos-2024/PD_Mochila/blob/master/PD_Mochila/public/Print02.png?raw=true" alt="Screenshot 02" />
+<img src="https://github.com/projeto-de-algoritmos-2024/PD_Mochila/blob/master/PD_Mochila/public/Print03.png?raw=true" alt="Screenshot 03" />
 
 ## Instalação 
 
